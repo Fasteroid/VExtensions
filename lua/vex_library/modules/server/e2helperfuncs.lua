@@ -47,6 +47,7 @@ end]]
 -- Taxing, this is why we will have the arrayOptimization / checkForArrays arg
 -- typeOf makes sure all elements in an array will be of lua type _.
 local function validArray(tbl,max,typeOf)
+    if not istable(tbl) then return false end
     local i,max,type_check = 1,max or 5000, isstring(typeOf)
     for K,V in pairs(tbl) do
         -- Check if there's any tables in the table
@@ -59,7 +60,7 @@ local function validArray(tbl,max,typeOf)
     end
     return true
 end
-vex.isE2Array = validArray --better_validArray
+vex.isE2Array = validArray -- more like "can be E2 Array"
 
 -- Allows to very accurately determine whether the given argument has a valid E2 table structure (presence of table fields/keys).
 -- However, it does not validate inner contents (it is assumed to not be malformed inside).

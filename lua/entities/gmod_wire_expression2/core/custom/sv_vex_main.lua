@@ -7,7 +7,7 @@
  Random Misc. Functions that are cool like hiding other people's chat (probably doesn't work) and setting the ranger Filter.                    
 ]]
 
-local table_insert, util_TraceLine = table.insert, util.TraceLine -- Gonna be using this a lot
+local table_insert, util_TraceLine, string_format = table.insert, util.TraceLine, string.format -- Gonna be using this a lot
 
 -- Takes out everything that isn't a valid entity in a table
 local function cleanupTable(filter)
@@ -52,19 +52,22 @@ end
 __e2setcost(20)
 e2function void hideChatPly(entity ply, hide)
     if not ply:IsValid() then return end
-    if hide==0 then chatsHidden[ply] = false return end
+    if hide==0 then chatsHidden[ply] = nil return end
     if self.player ~= ply then
         if ply:GetInfoNum("canhidechatply_cl",0)==0 then return end
-        ply:PrintMessage(HUD_PRINTCONSOLE, string.format("Your chat was hidden by %s's expression 2 chip. See canhidechatply_cl to disable this.",self.player:GetName())) -- Notify the user that their chat was hidden by X
-        print(string.format("%s's chat was hidden by %s's expression 2 chip.",ply:GetName(),self.player:GetName())) -- Log to server console
+        ply:PrintMessage(HUD_PRINTCONSOLE, string_format("Your chat was hidden by %s's expression 2 chip. See canhidechatply_cl to disable this.",self.player:GetName())) -- Notify the user that their chat was hidden by X
+        print(string_format("%s's chat was hidden by %s's expression 2 chip.",ply:GetName(),self.player:GetName())) -- Log to server console
     end
     chatsHidden[ply] = true -- Disregard the convar if you're the owner of the chip.
 end
 
-hook.Add("PlayerSay","vex_hidechatply",function(sender)
+local WireReceiver = hook.GetTable().PlayerSay.Exp2TextReceiving
+
+hook.GetTable().PlayerSay.Exp2TextReceiving = function(sender,...)
+    local ret = WireReceiver(sender,...)
     if chatsHidden[sender] then
-        chatsHidden[sender] = false
-        -- Only hide chat once
+        chatsHidden[sender] = nil
         return ""
     end
-end)
+    return ret
+end
