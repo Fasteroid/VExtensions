@@ -1,14 +1,23 @@
 # VExtensions
-![Release Shield](https://img.shields.io/github/v/release/Vurv78/VExtensions?style=flat-square)
-![Size Shield](https://img.shields.io/github/repo-size/Vurv78/VExtensions?color=red&style=flat-square)
-![Contributors](https://img.shields.io/github/contributors/Vurv78/VExtensions?style=flat-square)
-![Activity](https://img.shields.io/github/commit-activity/m/Vurv78/VExtensions?color=yellow&style=flat-square)
+[![Release Shield](https://img.shields.io/github/v/release/Vurv78/VExtensions?style=flat-square)](https://github.com/Vurv78/VExtensions/releases/latest)
+[![Size Shield](https://img.shields.io/github/repo-size/Vurv78/VExtensions?color=red&style=flat-square)](https://github.com/Vurv78/VExtensions/tree/master/lua)
+[![Contributors](https://img.shields.io/github/contributors/Vurv78/VExtensions?style=flat-square)](https://github.com/Vurv78/VExtensions/contributors)
+[![Activity](https://img.shields.io/github/commit-activity/m/Vurv78/VExtensions?color=yellow&style=flat-square)](https://github.com/Vurv78/VExtensions/pulse)
 [![Featured Server](https://img.shields.io/badge/Featured%20Server-E2%20Beyond%20Infinity-lightgrey?style=flat-square)](steam://connect/69.140.244.127:27015)
+[![Wiki](https://img.shields.io/badge/Wiki-here-purple.svg?style=flat-square)](https://github.com/Vurv78/VExtensions/wiki)
 
 A compilation of mini-addons for [Expression2](https://github.com/wiremod/wire) and [StarfallEx](https://github.com/thegrb93/StarfallEx) development as well as a library to assist developers make more of them.
 
 Note that this will be unstable outside of releases.
 This is comparable to addons like [AntCore](https://github.com/tockno/E2-AntCore) or E2Power except, unlike E2Power, not filled with bugs and backdoors.
+
+<details><summary>Example Code</summary><p>
+
+```python
+print( runString("error(\"test\")", 1) ) #--> "test"
+```
+More: https://github.com/Vurv78/VExtensions/discussions/categories/show-and-tell
+</p></details>
 
 ## Additions
 
@@ -64,6 +73,3 @@ StarfallEx:
 ```
 player:setEyeAngles(angle ang)
 ```
-
-## More Info
-More info can be found at the WIP Wiki here: https://github.com/Vurv78/VExtensions/wiki
